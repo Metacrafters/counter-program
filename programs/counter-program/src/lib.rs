@@ -9,16 +9,19 @@ pub mod counter_program {
     pub fn create_counter(ctx: Context<CreateCounter>) -> Result<()> {
         ctx.accounts.counter.authority = ctx.accounts.authority.key();
         ctx.accounts.counter.count = 0;
+        msg!("Counter initialized: {}", ctx.accounts.counter.count);
         Ok(())
     }
 
     pub fn increment(ctx: Context<Increment>) -> Result<()> {
         ctx.accounts.counter.count += 1;
+        msg!("Count: {}", ctx.accounts.counter.count);
         Ok(())
     }
 
     pub fn decrement(ctx: Context<Decrement>) -> Result<()> {
         ctx.accounts.counter.count -= 1;
+        msg!("Count: {}", ctx.accounts.counter.count);
         Ok(())
     }
 }

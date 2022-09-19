@@ -1,5 +1,5 @@
 import * as anchor from "@project-serum/anchor";
-import { Program } from "@project-serum/anchor";
+import { Program, ProgramErrorStack } from "@project-serum/anchor";
 import { CounterProgram } from "../target/types/counter_program";
 import { Keypair, SystemProgram } from "@solana/web3.js";
 
@@ -28,10 +28,20 @@ describe("counter-program", () => {
     // increment test goes here
     const tx = await program.methods.increment()
     .accounts({
-
+      counter: counter.publicKey,
+      authority: provider.wallet.publicKey
     })
-    .signers([])
     .rpc()
     console.log("Increment tx signature: ", tx)
+  })
+
+  it("Decrementing counter", async () => {
+    const tx = await program.methods.decrement()
+    .accounts({
+      counter: counter.publicKey,
+      authority: provider.wallet.publicKey
+    })
+    .rpc()
+    console.log("Decrementing tx signature: ", tx)
   })
 });
