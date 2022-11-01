@@ -7,7 +7,7 @@ counter_program = "3eEKwf7z4eSKApGgGnH8Q6F8tpMn8JKYUMCNwtjbRAv9"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "https://api.devnet.solana.com"
+cluster = "localnet"
 wallet = "/home/ixmorrow/.config/solana/id.json"
 
 [scripts]
